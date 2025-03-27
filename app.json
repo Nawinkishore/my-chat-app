@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "plugins": [
+      "expo-router"
+    ],
+    "name": "my-chat-app",
+    "slug": "my-chat-app"
+  }
+}
