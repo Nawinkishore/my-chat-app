@@ -206,4 +206,24 @@ alter table public.messages
   add constraint messages_sender_id_fkey
   foreign key (sender_id)
   references public.users(id)
-  on delete cascade; 
+  on delete cascade;
+
+-- Grant necessary permissions
+grant usage on schema public to postgres, anon, authenticated, service_role;
+grant all on all tables in schema public to postgres;
+grant all on all sequences in schema public to postgres;
+grant all on all functions in schema public to postgres;
+grant select on all tables in schema public to anon, authenticated;
+grant select on all sequences in schema public to anon, authenticated;
+grant select on all functions in schema public to anon, authenticated;
+grant insert, update, delete on all tables in schema public to authenticated;
+grant insert, update, delete on all sequences in schema public to authenticated;
+grant insert, update, delete on all functions in schema public to authenticated;
+
+-- Create indexes for better performance
+create index if not exists idx_conversation_participants_user_id on public.conversation_participants(user_id);
+create index if not exists idx_conversation_participants_conversation_id on public.conversation_participants(conversation_id);
+create index if not exists idx_messages_conversation_id on public.messages(conversation_id);
+create index if not exists idx_messages_sender_id on public.messages(sender_id);
+create index if not exists idx_friends_user_id on public.friends(user_id);
+create index if not exists idx_friends_friend_id on public.friends(friend_id); 
