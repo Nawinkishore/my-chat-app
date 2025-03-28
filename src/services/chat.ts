@@ -36,8 +36,8 @@ export const chatService = {
       .from('conversations')
       .select(`
         *,
-        conversation_participants!inner (
-          user:users (
+        conversation_participants (
+          users (
             id,
             email,
             full_name,
@@ -67,7 +67,7 @@ export const chatService = {
           id: conv.id,
           created_at: conv.created_at,
           current_user_id: user.id,
-          participants: conv.conversation_participants.map((p: any) => p.user),
+          participants: conv.conversation_participants.map((p: any) => p.users),
           last_message: lastMessage || null,
         };
       })
@@ -87,8 +87,8 @@ export const chatService = {
       .from('conversations')
       .select(`
         *,
-        conversation_participants!inner (
-          user:users (
+        conversation_participants (
+          users (
             id,
             email,
             full_name,
@@ -118,7 +118,7 @@ export const chatService = {
       id: conversation.id,
       created_at: conversation.created_at,
       current_user_id: user.id,
-      participants: conversation.conversation_participants.map((p: any) => p.user),
+      participants: conversation.conversation_participants.map((p: any) => p.users),
       last_message: lastMessage || null,
     };
   },
@@ -209,8 +209,8 @@ export const chatService = {
       .from('conversations')
       .select(`
         *,
-        conversation_participants!inner (
-          user:users (
+        conversation_participants (
+          users (
             id,
             email,
             full_name,
@@ -229,7 +229,7 @@ export const chatService = {
       id: fullConversation.id,
       created_at: fullConversation.created_at,
       current_user_id: user.id,
-      participants: fullConversation.conversation_participants.map((p: any) => p.user),
+      participants: fullConversation.conversation_participants.map((p: any) => p.users),
       last_message: null,
     };
   },
