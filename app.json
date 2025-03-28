@@ -1,10 +1,29 @@
 {
   "expo": {
-    "scheme": "acme",
+    "name": "My Chat App",
+    "slug": "my-chat-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "my-chat-app",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
+    },
     "plugins": [
       "expo-router"
     ],
-    "name": "my-chat-app",
-    "slug": "my-chat-app"
+    "newArchEnabled": true
   }
 }
